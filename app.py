@@ -1,8 +1,8 @@
 import streamlit as st
 import pickle
 
-laptops = pickle.load(open('venv/df.pkl', 'rb'))
-sig = pickle.load(open('venv/sig.pkl', 'rb'))
+laptops = pickle.load(open('df.pkl', 'rb'))
+sig = pickle.load(open('sig.pkl', 'rb'))
 
 st.set_page_config(page_title='Laptop Recommendation System', page_icon='💻')
 
