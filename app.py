@@ -11,8 +11,24 @@ choice = st.sidebar.selectbox("Menu", menu)
 
 if choice == "Home":
     st.header('Laptop Recommendation System')
+    nav3, nav4 = st.columns([1, 1])
+    with nav3:
+        value1 = st.number_input('Minimum Price',step=5000)
+    with nav4:
+        value2 = st.number_input('Maximum Price',value=300000,step=5000)
+
+    PriceCheck = laptops[laptops['price'].between(value1, value2)]
     search_list = ['Brand and Model', 'Specifications']
 
+    # values = st.slider(
+    #      'Select a price range',
+    #     0, 300000, (0, 300000))
+    # if st.button('Apply Filter'):
+    #     st.write(values)
+    #df['price'] = df['price'].astype('int')
+    #laptops = laptops[(value1 <= laptops['price'] <= value2)]
+    #PriceCheck = laptops[laptops['price'].between(value1, value2)]
+    #price = st.slider('Price',0,300000,(0,300000))
     nav1, nav2 = st.columns([1,3])
 
     with nav1:
@@ -22,7 +38,7 @@ if choice == "Home":
         )
     with nav2:
         if selected_search == "Brand and Model":
-            laptop_list = laptops['name'].values
+            laptop_list = PriceCheck['name']
             selected_laptop = st.selectbox(
                 "Select a laptop from the search bar.",
                 laptop_list
@@ -65,7 +81,7 @@ if choice == "Home":
                 return  selected_laptop_name,selected_laptop_specs, selected_laptop_description, selected_laptop_price, selected_laptop_predicted_price, selected_laptop_url, recommended_laptop_names, recommended_laptop_specs1, recommended_laptop_specs, recommended_laptop_description, recommended_laptop_price, recommended_laptop_predicted_price, recommended_laptop_url
 
         elif selected_search == "Specifications":
-            laptop_list = laptops['specs'].values
+            laptop_list = PriceCheck['specs'].values
             selected_laptop = st.selectbox(
                 "Select a laptop from the search bar.",
                 laptop_list
