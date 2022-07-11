@@ -136,7 +136,7 @@ if choice == "Home":
             st.markdown(selected_laptop_url[0])
             st.write('**Price**')
             st.subheader(selected_laptop_price[0])
-            st.write('**Predicted Price**')
+            st.write('**Recommended Price to buy**')
             st.subheader(selected_laptop_predicted_price[0])
         st.header('Laptops you might like')
         for x in range(5):
